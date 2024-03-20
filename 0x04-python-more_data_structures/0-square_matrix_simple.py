@@ -4,6 +4,6 @@ def square_matrix_simple(matrix=[]):
     for row in matrix:
         sqr_row = []
         for element in row:
-            sqr_row.append(element * 2)
+            sqr_row.append(element ** 2)
         sqr_mat.append(sqr_row)
     return sqr_mat
