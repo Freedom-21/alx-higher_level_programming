@@ -2,17 +2,16 @@
 """Task 1, Defining a Real Rectangle"""
 
 class Rectangle:
-    """Class Rectangle that defines a rectangle by its width and height."""
+    """Class Rectangle that defines a rectangle by its width and height.
+        Args:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
+
+        """
 
     def __init__(self, width=0, height=0):
 
-    """Initialize a new Rectangle.
-
-    Args:
-        width (int): The width of the rectangle.
-        height (int): The height of the rectangle.
-
-        """
+    """Initialize a new Rectangle"""
 
         self.width = width
         self.height = height
