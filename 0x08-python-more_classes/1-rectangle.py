@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Task 1, Defining a Real Rectangle"""
 
 class Rectangle:
     """Class Rectangle that defines a rectangle by its width and height."""
