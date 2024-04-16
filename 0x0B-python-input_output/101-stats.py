@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" parse log """
+
 import sys
 
 def print_stats(total_size, status_codes):
@@ -14,23 +16,26 @@ def main():
 
     try:
         for line in sys.stdin:
-            parts = line.split()
-            if len(parts) > 1:
-
-                total_size += int(parts[-1])
-
+            try:
+                parts = line.split()
                 status_code = int(parts[-2])
+                file_size = int(parts[-1])
+
+                total_size += file_size
                 if status_code in status_codes:
                     status_codes[status_code] += 1
-            
-            line_count += 1
 
-            if line_count % 10 == 0:
-                print_stats(total_size, status_codes)
+                line_count += 1
+
+                if line_count % 10 == 0:
+                    print_stats(total_size, status_codes)
+
+            except (IndexError, ValueError):
+                continue
 
     except KeyboardInterrupt:
         print_stats(total_size, status_codes)
-        raise
+        sys.exit()
 
 if __name__ == "__main__":
     main()
