@@ -8,16 +8,7 @@ class Rectangle(Base):
     """Rectangle class that inherits from Base"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialize a new Rectangle.
-
-        Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
-            x (int): The x coordinate of the rectangle.
-            y (int): The y coordinate of the rectangle.
-            id (int): The id of the rectangle.
-        """
-
+        """Initialize a new Rectangle."""
         super().__init__(id)
         self.width = width
         self.height = height
@@ -84,19 +75,8 @@ class Rectangle(Base):
         """Return the area of the rectangle."""
         return self.width * self.height
 
-    def display(self):
-        """Print the rectangle instance with '#' by respecting x and y."""
-        print("\n" * self.y, end="")
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
-
-    def __str__(self):
-        """Return the string representation of the Rectangle."""
-        return (f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
-                f"{self.width}/{self.height}")
-
     def update(self, *args, **kwargs):
-        """Update the Rectangle attributes from args or kwargs."""
+        """Update the class Rectangle by assigning an arg to each attr"""
         attributes = ['id', 'width', 'height', 'x', 'y']
         if args:
             for attr, value in zip(attributes, args):
@@ -105,3 +85,18 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if key in attributes:
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of a Rectangle."""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }
+
+    def __str__(self):
+        """Return the string representation of the Rectangle."""
+        return (f"[Rectangle] ({self.id}) {self.x}/{self.y} - "
+                f"{self.width}/{self.height}")

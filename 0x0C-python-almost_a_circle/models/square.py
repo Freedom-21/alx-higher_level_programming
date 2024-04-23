@@ -8,13 +8,7 @@ class Square(Rectangle):
     """Square class that inherits from Rectangle"""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """Initialize a new Square.
-        Args:
-            size (int): The size of the square.
-            x (int): The x coordinate of the square.
-            y (int): The y coordinate of the square.
-            id (int): The id of the square.
-        """
+        """Initialize a new Square."""
         super().__init__(size, size, x, y, id)
 
     @property
@@ -29,7 +23,7 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-        """Return the string representation of the square."""
+        """Return the string representation of the Square."""
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
 
     def update(self, *args, **kwargs):
@@ -45,8 +39,11 @@ class Square(Rectangle):
                 elif key in attributes:
                     setattr(self, key, value)
 
-    def display(self):
-        """Print the square instance with '#' by respecting x and y."""
-        print("\n" * self.y, end="")
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
+    def to_dictionary(self):
+        """Return the dictionary representation of a Square."""
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }
